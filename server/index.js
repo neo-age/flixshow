@@ -1,24 +1,18 @@
-const express = require("express");
-const mongoose = require("mongoose")
-const app = express();
+const express = require('express')
+const app = express()
+const mongoose = require('mongoose')
+const dotenv = require('dotenv').config();
+const authroute = require('./routes/auth')
 
-const ud = require("./models/Users")
+mongoose.connect(
+    process.env.MONGO_URL, { useNewUrlParser : true , useUnifiedTopology : true }
+    ).then(()=>console.log("mongoDB connected")).catch(err=>console.log(err))
 
 app.use(express.json())
+app.use('/api/auth', authroute)
 
-mongoose.connect("mongodb://localhost:27017/userData", { useNewUrlParser : true })
+const PORT = 40000
 
-app.get('/', async (req, res)=>{
-    const user = new ud({ username: "sam",userage: 25})
-
-    try {
-        await user.save()
-    } catch(err){
-        console.log(err)
-    }
-})
-
-const PORT = 4001;
-app.listen(PORT,()=>{
-    console.log("server running in "+ PORT)
+app.listen(PORT, ()=>{
+    console.log('back end is working fine')
 })
