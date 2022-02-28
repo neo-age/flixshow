@@ -2,8 +2,11 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const dotenv = require('dotenv').config();
-const authRroute = require('./routes/auth')
+const authRoute = require('./routes/auth')
 const userRoute = require('./routes/users')
+const movieRoute = require('./routes/movies')
+const listRoute = require('./routes/lists')
+
 
 mongoose.connect(
     process.env.MONGO_URL, { useNewUrlParser : true , useUnifiedTopology : true }
@@ -11,9 +14,13 @@ mongoose.connect(
 
 app.use(express.json())
 
-app.use('/api/auth', authRroute)
+app.use('/api/auth', authRoute)
 
 app.use('/api/users', userRoute)
+
+app.use('/api/movies', movieRoute)
+
+app.use('/api/lists', listRoute)
 
 const PORT = 40000
 
