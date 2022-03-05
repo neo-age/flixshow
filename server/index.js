@@ -22,7 +22,7 @@ app.use('/api/movies', movieRoute)
 
 app.use('/api/lists', listRoute)
 
-const PORT = 40000
+const PORT = 4000
 
 app.listen(PORT, ()=>{
     console.log('back end is working fine')
