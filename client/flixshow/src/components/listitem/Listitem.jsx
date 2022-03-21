@@ -1,21 +1,44 @@
 import "./Listitem.scss"
 import {PlayArrow, Add, ThumbUpOutlined, ThumbDownOutlined} from '@material-ui/icons';
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
-const Listitem = ({index}) => {
+const Listitem = ({index, item}) => {
     const [isHovered, setIsHovered] = useState(false)
-    const trailer = "https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
+    const [movie, setMovie] = useState([])
+
+    useEffect(()=>{
+        const getelementinfo = async ()=>{
+            try {
+                const res = await axios.get("api/movies/id/"+item,
+                  {
+                    headers: {
+                      token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMmQ5OTM4M2E2MWZkNjA3NGNhNmM2NSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0NzE1NTkwMCwiZXhwIjoxNjQ3NTg3OTAwfQ.oFiLKJftow99c3gcCfkrg4MfoGNrC-PUnoK3AmKYwOc"
+                    }
+                  }
+                );
+                console.log(item);
+                setMovie(res.data)
+              }catch(err){
+                console.log(err);
+            }
+        }
+        getelementinfo()
+    },[item])
+
     return (
+        <Link to='/watch' state={{movie: movie}}>
         <div 
             className='listitem'
             style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
             onMouseEnter={()=>setIsHovered(true)} 
             onMouseLeave={()=>setIsHovered(false)}
         >
-            <img src="https://cdn11.bigcommerce.com/s-ydriczk/images/stencil/original/products/86970/86523/The_Lego_Movie_final_style_buy_original_movie_posters_at_starstills__11358__13470.1394515783.jpg?c=2" alt="" />
+            <img src={movie.img} alt="" />
             {isHovered && (
                 <>
-                <video src={trailer} autoPlay={true} loop muted/>
+                <video src={movie.trailer} autoPlay={true} loop />
             <div className="iteminfo">
                 <div className="icons">
                     <PlayArrow className="icon"/>
@@ -24,18 +47,17 @@ const Listitem = ({index}) => {
                     <ThumbDownOutlined className="icon"/>
                 </div>
                 <div className="iteminfotop">
-                    <span>1 Hour 14 mins</span>
-                    <span className="agelimit">+7</span>
-                    <span>2016</span>
+                    <span>{movie.duration}</span>
+                    <span className="agelimit">+{movie.agelimit}</span>
+                    <span>{movie.year}</span>
                 </div>
-                <div className="desc">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptate fuga a iure quos nihil reiciendis ex quo in.
-                </div>
-                <div className="genre">action</div>
+                <div className="desc">{movie.desc}</div>
+                <div className="genre">{movie.genre}</div>
             </div>
                 </>
             )}
         </div>
+        </Link>
     );
 }
 

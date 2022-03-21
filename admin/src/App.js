@@ -9,14 +9,18 @@ import NewUser from "./pages/newUser/NewUser";
 import ProductList from "./pages/productList/ProductList";
 import Product from "./pages/product/Product";
 import NewProduct from "./pages/newProduct/NewProduct";
+import Login from "./pages/login/Login";
 
 function App() {
   return (
     <Router>
+      <Switch>
+      <Route path="/login">
+            <Login />
+      </Route>
       <Topbar />
       <div className="container">
         <Sidebar />
-        <Switch>
           <Route exact path="/">
             <Home />
           </Route>
@@ -26,10 +30,10 @@ function App() {
           <Route path="/user/:userId">
             <User />
           </Route>
-          <Route path="/newUser">
+          <Route path="/newuser">
             <NewUser />
           </Route>
-          <Route path="/products">
+          <Route path="/shows">
             <ProductList />
           </Route>
           <Route path="/product/:productId">
@@ -38,8 +42,8 @@ function App() {
           <Route path="/newproduct">
             <NewProduct />
           </Route>
-        </Switch>
       </div>
+      </Switch>
     </Router>
   );
 }

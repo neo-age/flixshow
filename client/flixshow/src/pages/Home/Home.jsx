@@ -14,11 +14,12 @@ const Home = ({type}) => {
                 const res = await axios.get(`api/lists${type ? "?type=" + type : ""}${genre ? "&genre=" + genre : ""}`,
                   {
                     headers: {
-                      token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGU2NTI5NmI1NjI2ZWY0NjY1NmJjMSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0NjQxNTg2NywiZXhwIjoxNjQ2ODQ3ODY3fQ.WwmkFikaV1YOmT7bDmnnGxNZXNvyiKsgzy2IW-y6s3s",
+                      token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMmQ5OTM4M2E2MWZkNjA3NGNhNmM2NSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0NzE1NTkwMCwiZXhwIjoxNjQ3NTg3OTAwfQ.oFiLKJftow99c3gcCfkrg4MfoGNrC-PUnoK3AmKYwOc",
                     },
                   }
                 );
-                console.log(res);
+                console.log(res.data);
+                setLists(res.data)
               }catch(err){
                 console.log(err);
             }
@@ -29,10 +30,10 @@ const Home = ({type}) => {
         <div className='home'>
             <Navbar/>
             <Featured type={type}/>
-            <List/>
-            <List/>
-            <List/>
-            <List/>
+            {lists.map((list, i)=>(
+              <List list={list} key={i}/>
+            ))}
+            
         </div>
     );
 }

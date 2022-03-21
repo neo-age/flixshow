@@ -1,7 +1,30 @@
 import "./Featured.scss"
 import {PlayArrow, InfoOutlined} from '@material-ui/icons';
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const Featured = ({type}) => {
+    const [contant, setContant] = useState({})
+
+    useEffect(()=>{
+        const getRandomshow = async ()=>{
+            try {
+                const res = await axios.get(`api/movies?type=${type}`,
+                  {
+                    headers: {
+                      token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMmQ5OTM4M2E2MWZkNjA3NGNhNmM2NSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0NzE1NTkwMCwiZXhwIjoxNjQ3NTg3OTAwfQ.oFiLKJftow99c3gcCfkrg4MfoGNrC-PUnoK3AmKYwOc",
+                    },
+                  }
+                );
+                console.log(res.data[0]);
+                setContant(res.data[0])
+              }catch(err){
+                console.log(err);
+            }
+        }
+        getRandomshow()
+    },[type])
+    console.log(contant);
     return (
         <div className='featured'>
             {type && (
@@ -25,10 +48,10 @@ const Featured = ({type}) => {
                     </select>
                 </div>
             )}
-            <img width="100%" src="https://images.unsplash.com/photo-1643191834226-ba266bf480bb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="" />
+            <img width="100%" src={contant.img} alt="" />
             <div className="info">
-                <img src="https://occ-0-1722-1723.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABRKrgH8goki6B50_fsipiwG8-efCu0w57iY4KsMiMOkV_xpwmCR1bwdO-qexN7jGsMEEVHu_udqNGVab2eGM-RxjYidvNBjuWkAE.png?r=df1" alt="" />
-                <span className="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae placeat accusamus, incidunt distinctio velit perspiciatis commodi delectus sequi sed natus qui explicabo quasi similique ratione iste reiciendis dolores molestias? Laboriosam!</span>
+                <img src={contant.imgtitle} alt="" />
+                <span className="desc">{contant.desc}</span>
                 <div className="buttons">
                     <button className="play">
                         <PlayArrow/>

@@ -1,14 +1,20 @@
 import './Watch.scss'
 import {ArrowBack} from '@material-ui/icons';
+import { Link, useLocation } from 'react-router-dom';
 
 const Watch = () => {
+    const location = useLocation()
+    const show = location.state.movie
+    //console.log(location.state.movie);
     return (
         <div className='watch'>
+            <Link to="/">
             <div className="back">
                 <ArrowBack />
                 Home
             </div>
-            <video src="https://storage.coverr.co/videos/MueC7hjKPUClmEzMLNhPKnqKlOYwBHKo?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6Ijg3NjdFMzIzRjlGQzEzN0E4QTAyIiwiaWF0IjoxNjQ0MDk0NTUwfQ.5uzikdVnyL5rc0HM-KXk8p7xXmvXtWKEXlL-EmnOv98" autoPlay={true} progress controls className="video"></video>
+            </Link>
+            <video src={show.trailer} autoPlay={true} progress controls className="video" width="pixels"></video>
         </div>
     );
 }
