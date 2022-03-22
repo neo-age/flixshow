@@ -41,7 +41,7 @@ export default function Home() {
     getStats()
   },[MONTHS])
 
-  console.log(userStats)
+  //console.log(userStats)
 
   return (
     <div className="home">

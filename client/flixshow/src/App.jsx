@@ -25,8 +25,6 @@ function App() {
             <Route path='/watch' element={<Watch />}/>
             </>
           )}
-          
-          
         </Routes>
     </Router>
   )
