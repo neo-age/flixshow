@@ -7,6 +7,7 @@ export const loginSuccess = (user) =>({
     payload:user,
 });
 
-export const loginFailure = () =>({
+export const loginFailure = (err) =>({
     type:"LOGIN_FAILURE",
+    payload:err,
 });

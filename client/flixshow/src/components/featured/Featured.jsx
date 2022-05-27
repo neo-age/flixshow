@@ -12,7 +12,7 @@ const Featured = ({type}) => {
                 const res = await axios.get(`api/movies?type=${type}`,
                   {
                     headers: {
-                      token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMmQ5OTM4M2E2MWZkNjA3NGNhNmM2NSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0NzE1NTkwMCwiZXhwIjoxNjQ3NTg3OTAwfQ.oFiLKJftow99c3gcCfkrg4MfoGNrC-PUnoK3AmKYwOc",
+                      token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGU2NTI5NmI1NjI2ZWY0NjY1NmJjMSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0OTg3OTY2OCwiZXhwIjoxNjUwMzExNjY4fQ.SC8GrfgU9qxf-CAdUaBGPX2Fg3gjn-65odjfu8ZtM8c",
                     },
                   }
                 );
