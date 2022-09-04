@@ -28,7 +28,7 @@ export default function Dashboard() {
   useEffect(()=>{
     const getStats = async ()=>{
       try {
-        const res = await axios.get("users/stats/", {headers:{token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMmQ5OTM4M2E2MWZkNjA3NGNhNmM2NSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0NzE1NTkwMCwiZXhwIjoxNjQ3NTg3OTAwfQ.oFiLKJftow99c3gcCfkrg4MfoGNrC-PUnoK3AmKYwOc"}})
+        const res = await axios.get("users/stats/", {headers:{token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMmQ5OTM4M2E2MWZkNjA3NGNhNmM2NSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1OTEwNjcwNCwiZXhwIjoxNjg1MDI2NzA0fQ.MMUlE01JvFUGm-XbhqsQWqu4liqk2XFVNLp8YGh8-iI"}})
             //console.log(res.data);
             const statsList = res.data.sort(function(a, b){
               return a._id - b._id

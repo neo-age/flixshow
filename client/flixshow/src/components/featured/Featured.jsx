@@ -1,5 +1,5 @@
 import "./Featured.scss"
-import {PlayArrow, InfoOutlined} from '@material-ui/icons';
+import { PlayArrow, InfoOutlined } from '@material-ui/icons';
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -12,11 +12,10 @@ const Featured = ({type}) => {
                 const res = await axios.get(`api/movies?type=${type}`,
                   {
                     headers: {
-                      token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGU2NTI5NmI1NjI2ZWY0NjY1NmJjMSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0OTg3OTY2OCwiZXhwIjoxNjUwMzExNjY4fQ.SC8GrfgU9qxf-CAdUaBGPX2Fg3gjn-65odjfu8ZtM8c",
+                      token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMmQ5OTM4M2E2MWZkNjA3NGNhNmM2NSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY2MjA3MDI2MiwiZXhwIjoxNjg3OTkwMjYyfQ.oflhuwyOtix4ZXVfljMIVKYeBXmH9PXcrVi5mgEz7jI",
                     },
                   }
                 );
-                console.log(res.data[0]);
                 setContant(res.data[0])
               }catch(err){
                 console.log(err);
@@ -24,7 +23,6 @@ const Featured = ({type}) => {
         }
         getRandomshow()
     },[type])
-    console.log(contant);
     return (
         <div className='featured'>
             {type && (
@@ -48,19 +46,19 @@ const Featured = ({type}) => {
                     </select>
                 </div>
             )}
-            <img width="100%" src={contant.img} alt="" />
+            
+            <img src={contant.img} alt="" />
             <div className="info">
                 <img src={contant.imgtitle} alt="" />
-                <span className="desc">{contant.desc}</span>
                 <div className="buttons">
-                    <button className="play">
-                        <PlayArrow/>
-                        <span>Play</span>
-                    </button>
-                    <button className="more">
-                        <InfoOutlined/>
-                        <span>Info</span>
-                    </button>
+                <button className="play">
+                    <PlayArrow />
+                    <span>Play</span>
+                </button>
+                <button className="more">
+                    <InfoOutlined />
+                    <span>Info</span>
+                </button>
                 </div>
             </div>
         </div>

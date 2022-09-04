@@ -14,7 +14,7 @@ const Watch = () => {
                 Home
             </div>
             </Link>
-            <video src={show.trailer} autoPlay={true} progress controls className="video" width="pixels"></video>
+            <video src={show.video} autoPlay={true} progress controls className="video" width="pixels"></video>
         </div>
     );
 }

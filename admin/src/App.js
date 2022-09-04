@@ -1,6 +1,7 @@
+import "./App.css";
+import { useContext } from "react";
 import Sidebar from "./components/sidebar/Sidebar";
 import Topbar from "./components/topbar/Topbar";
-import "./App.css";
 import Dashboard from "./pages/dashboard/Dashboard";
 import UserList from "./pages/userList/UserList";
 import User from "./pages/user/User";
@@ -12,20 +13,25 @@ import Login from "./pages/login/Login";
 import {
   BrowserRouter as Router,
   Routes,
-  Route
+  Route,
+  Navigate
 } from "react-router-dom";
+import { AuthContext } from "./context/authContext/AuthContext";
 
 function App() {
-  return (
+  const {user} = useContext(AuthContext);
+  return user ? (
     <Router>
-      <Routes>
-        <Route path="/login" element={<Login />}/>
-      </Routes>
       <Topbar />
       <div className="container">
         <Sidebar />
         <Routes>
-          <Route exact path="/" element={<Login />}/>
+          <Route exact path="/login" element={user ? (
+                <Navigate replace to="/"/>
+              ) : (
+                <Dashboard />
+              )}/>
+          <Route exact path="/" element={<Dashboard />}/>
           <Route path="/users" element={<UserList />}/>
           <Route path="/user/:userId" element={<User />}/>
           <Route path="/newuser" element={<NewUser />}/>
@@ -35,7 +41,19 @@ function App() {
         </Routes>
       </div>
     </Router>
-  );
+  ) : (
+    <Router>
+        <Routes>
+          <Route exact path="/" element={user ? (
+              <Dashboard />
+            ) : (
+              <Navigate replace to="/login"/>
+              
+            )}/>
+          <Route path="/login" element={<Login/>}/>
+        </Routes>
+    </Router>
+  )
 }
 
 export default App;

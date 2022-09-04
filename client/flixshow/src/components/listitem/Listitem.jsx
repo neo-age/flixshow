@@ -14,11 +14,10 @@ const Listitem = ({index, item}) => {
                 const res = await axios.get("api/movies/id/"+item,
                   {
                     headers: {
-                      token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGU2NTI5NmI1NjI2ZWY0NjY1NmJjMSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0OTg3OTY2OCwiZXhwIjoxNjUwMzExNjY4fQ.SC8GrfgU9qxf-CAdUaBGPX2Fg3gjn-65odjfu8ZtM8c"
+                      token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMmQ5OTM4M2E2MWZkNjA3NGNhNmM2NSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1OTEwNjcwNCwiZXhwIjoxNjg1MDI2NzA0fQ.MMUlE01JvFUGm-XbhqsQWqu4liqk2XFVNLp8YGh8-iI"
                     }
                   }
                 );
-                console.log(item);
                 setMovie(res.data)
               }catch(err){
                 console.log(err);
@@ -28,36 +27,44 @@ const Listitem = ({index, item}) => {
     },[item])
 
     return (
-        <Link to='/watch' state={{movie: movie}}>
+        
         <div 
             className='listitem'
-            style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
             onMouseEnter={()=>setIsHovered(true)} 
             onMouseLeave={()=>setIsHovered(false)}
         >
             <img src={movie.img} alt="" />
             {isHovered && (
                 <>
-                <video src={movie.trailer} autoPlay={true} loop />
-            <div className="iteminfo">
-                <div className="icons">
+            <div className="listiteminfo">
+                <div className="itemtrailer">
+                <Link to='/watch' state={{movie: movie}}>
+                    <video src={movie.trailer} autoPlay={true} loop />
+                </Link>
+                </div>
+                <div className="iteminfo">
+                <div className="itemicons_agelimit_year">
+                    <div className="iteminfotop">
+                        <span>{movie.duration+" min"}</span>
+                        <span className="agelimit">+{movie.agelimit}</span>
+                        <span>{movie.year}</span>
+                    </div>
+                    <div className="itemicons">
                     <PlayArrow className="icon"/>
                     <Add className="icon"/>
                     <ThumbUpOutlined className="icon"/>
                     <ThumbDownOutlined className="icon"/>
+                    </div>
+                    
                 </div>
-                <div className="iteminfotop">
-                    <span>{movie.duration}</span>
-                    <span className="agelimit">+{movie.agelimit}</span>
-                    <span>{movie.year}</span>
+                <div className="desc" >{movie.desc.substring(0, 150) } { movie.desc.length >= 150 && "..." }</div>
+                <div className="genre">{"Genre: "+movie.genre}</div>
                 </div>
-                <div className="desc">{movie.desc}</div>
-                <div className="genre">{movie.genre}</div>
             </div>
                 </>
             )}
         </div>
-        </Link>
+        
     );
 }
 

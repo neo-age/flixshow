@@ -20,7 +20,14 @@
                     padding: 5px;
                 }
         }
-
+        .background_fade {
+            background: linear-gradient(100deg, rgb(0 0 0 / 100%) 0%, #00000000 60%);
+            width: 100%;
+            height: inherit;
+            position: absolute;
+            top: 0;
+            z-index: 0;
+        }
         img{
             width: 100%;
             height: 100%;
@@ -28,15 +35,18 @@
         }
         .info{
             width: 35%;
+            height: 31%;
             position: absolute;
             left: 50px;
-            bottom: 100px;
-            color:white;
+            bottom: 60px;
+            color: white;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            justify-content: space-between;
                 img{
                     width: 400px;
+                    height: fit-content;
+                    object-fit: contain;
                 }
                 .desc{
                     margin: 20px 0px;
@@ -54,17 +64,29 @@
                             font-weight: 500;
                             margin-right: 10px;
                             cursor: pointer;
-                            &.play{
-                                background-color: white;
-                                color: var(--main-color);
+                            transition: 0.2s;
+
+                        &.play {
+                        background-color: white;
+                        color: var(--main-color);
+                            &:hover{
+                                background-color: black;
+                                color: #ffffff;
                             }
-                            &.more{
-                                background-color: gray;
+                        }
+
+                        &.more {
+                        background-color: rgb(85, 85, 85);
+                        color: white;
+                            &:hover{
+                                background-color: #242424;
                                 color: white;
                             }
-                            span{
-                                margin-left: 5px;
-                            }
+                        }
+
+                        span {
+                        margin-left: 5px;
+                        }
                         }
                 }
         }

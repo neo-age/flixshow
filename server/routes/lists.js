@@ -10,7 +10,7 @@ router.post("/", verify, async (req, res) => {
       try{
         const movie = await newList.save()
         res.status(201).json(movie)
-      }catch(err){
+      } catch(err){
         res.status(500).json(err)
       }
     } else {

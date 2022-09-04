@@ -25,5 +25,5 @@ app.use('/api/lists', listRoute)
 const PORT = 4400
 
 app.listen(PORT, ()=>{
-    console.log('back end is working fine')
+    console.log('back end is running at '+ PORT)
 })
