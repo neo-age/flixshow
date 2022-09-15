@@ -5,6 +5,7 @@ import {
   TrendingUp,
   PermIdentity,
   PlayCircleOutline,
+  Add,
   AttachMoney,
   BarChart,
   MailOutline,
@@ -46,11 +47,17 @@ export default function Sidebar() {
                 <PermIdentity className="sidebarIcon" />
                 Users
               </li>
-            </Link>
-            <Link to="/shows" className="link">
+            </Link> 
+            <Link to="/showList" className="link">
               <li className="sidebarListItem">
                 <PlayCircleOutline className="sidebarIcon" />
-                movies and shows
+                Movies and shows
+              </li>
+            </Link>
+            <Link to="/newshow" className="link">
+              <li className="sidebarListItem">
+                <Add className="sidebarIcon" />
+                Add new
               </li>
             </Link>
             <li className="sidebarListItem">

@@ -1,0 +1,56 @@
+.NewShow {
+  flex: 4;
+}
+
+.addshowForm {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.addshowItem {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  padding: 20px;
+}
+
+.addshowItem > label {
+  color: gray;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.addshowItem > input {
+  padding: 10px;
+}
+
+.addshowItem > select {
+  padding: 10px;
+}
+
+.upload_media_button {
+  margin-top: 10px;
+  padding: 7px 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: darkblue;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+.upload_media_button:hover{
+    background-color:rgb(28, 28, 129) ;
+}
+.create_show_Button {
+  margin-top: 10px;
+  padding: 7px 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(27, 184, 48);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}

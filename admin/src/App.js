@@ -6,9 +6,9 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import UserList from "./pages/userList/UserList";
 import User from "./pages/user/User";
 import NewUser from "./pages/newUser/NewUser";
-import ProductList from "./pages/productList/ProductList";
-import Product from "./pages/product/Product";
-import NewProduct from "./pages/newProduct/NewProduct";
+import ShowList from "./pages/showList/showList";
+import Show from "./pages/show/show";
+import NewShow from "./pages/newShow/Newshow";
 import Login from "./pages/login/Login";
 import {
   BrowserRouter as Router,
@@ -35,9 +35,9 @@ function App() {
           <Route path="/users" element={<UserList />}/>
           <Route path="/user/:userId" element={<User />}/>
           <Route path="/newuser" element={<NewUser />}/>
-          <Route path="/shows" element={<ProductList />}/>
-          <Route path="/product/:productId" element={<Product />}/>
-          <Route path="/newproduct" element={<NewProduct />}/>
+          <Route path="/showList" element={<ShowList />}/>
+          <Route path="/show/:showid" element={<Show />}/>
+          <Route path="/newshow" element={<NewShow />}/>
         </Routes>
       </div>
     </Router>

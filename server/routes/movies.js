@@ -12,6 +12,7 @@ router.post("/", verify, async (req, res) => {
         res.status(201).json(movie)
       }catch(err){
         res.status(500).json(err)
+        console.log(err)
       }
     } else {
       res.status(403).json("You're not allowed to alter this data!");
@@ -20,18 +21,22 @@ router.post("/", verify, async (req, res) => {
 
 //UPDATE
 
-router.put("/id/:id", verify, async (req, res) => {
+router.put("/:id", verify, async (req, res) => {
   if (req.user.isAdmin) {
-    try{
-      const updatedMovie = await movieModel.findByIdAndUpdate(
-        req.params.id, { $set: req.body }, { new: true }
-      )
-      res.status(200).json(updatedMovie)
-    }catch(err){
-      res.status(500).json(err)
+    try {
+      const updatedMovie = await Movie.findByIdAndUpdate(
+        req.params.id,
+        {
+          $set: req.body,
+        },
+        { new: true }
+      );
+      res.status(200).json(updatedMovie);
+    } catch (err) {
+      res.status(500).json(err);
     }
   } else {
-    res.status(403).json("You're not allowed to alter this data!");
+    res.status(403).json("You are not allowed!");
   }
 });
 

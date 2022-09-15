@@ -1,15 +1,15 @@
-.product {
+.show {
   flex: 4;
   padding: 20px;
 }
 
-.productTitleContainer {
+.showTitleContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.productAddButton {
+.showAddButton {
   width: 80px;
   border: none;
   padding: 5px;
@@ -20,23 +20,23 @@
   cursor: pointer;
 }
 
-.productTop {
+.showTop {
   display: flex;
 }
 
-.productTopLeft,
-.productTopRight {
+.showTopLeft,
+.showTopRight {
   flex: 1;
 }
 
-.productTopRight {
+.showTopRight {
   padding: 20px;
   margin: 20px;
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
 }
 
-.productInfoImg {
+.showInfoImg {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -44,63 +44,63 @@
   margin-right: 20px;
 }
 
-.productInfoTop {
+.showInfoTop {
   display: flex;
   align-items: center;
 }
 
-.productName {
+.showName {
   font-weight: 600;
 }
 
-.productInfoBottom {
+.showInfoBottom {
   margin-top: 10px;
 }
 
-.productInfoItem {
-  width: 150px;
+.showInfoItem {
+  width: 250px;
   display: flex;
   justify-content: space-between;
 }
 
-.productInfoValue {
+.showInfoValue {
   font-weight: 300;
 }
 
-.productBottom {
+.showBottom {
   padding: 20px;
   margin: 20px;
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
 }
 
-.productForm {
+.showForm {
   display: flex;
   justify-content: space-between;
 }
 
-.productFormLeft {
+.showFormLeft {
   display: flex;
   flex-direction: column;
 }
 
-.productFormLeft > label {
+.showFormLeft > label {
   margin-bottom: 10px;
   color: gray;
 }
 
-.productFormLeft > input {
+.showFormLeft > input {
   margin-bottom: 10px;
   border: none;
   padding: 5px;
   border-bottom: 1px solid gray;
 }
 
-.productFormLeft >select{
+.showFormLeft >select{
   margin-bottom: 10px;
 }
 
-.productUploadImg{
+.showUploadImg{
   width: 100px;
   height: 100px;
   border-radius: 10px;
@@ -108,18 +108,18 @@
   margin-right: 20px;
 }
 
-.productFormRight{
+.showFormRight{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
-.productUpload{
+.showUpload{
   display: flex;
   align-items: center;
 }
 
-.productButton{
+.showButton{
   border: none;
   padding: 5px;
   border-radius: 5px;

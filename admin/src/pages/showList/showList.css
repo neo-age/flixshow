@@ -1,13 +1,14 @@
-.productList{
+.showList{
     flex: 4;
+    width: 100%;
 }
 
-.productListItem{
+.showListItem{
     display: flex;
     align-items: center;
 }
 
-.productListImg {
+.showListImg {
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -15,7 +16,7 @@
     margin-right: 10px;
   }
 
-.productListEdit{
+.showListEdit{
     border: none;
     border-radius: 10px;
     padding: 5px 10px;
@@ -25,7 +26,7 @@
     margin-right: 20px;
 }
 
-.productListDelete{
+.showListDelete{
     color: red;
     cursor: pointer;
 }
