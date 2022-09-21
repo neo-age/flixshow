@@ -30,17 +30,17 @@ export const create_show_failure = (err) =>({
 });
 
 //EDIT
-export const edit_show_start = () =>({
-    type:"EDIT_SHOW_START",
+export const update_show_start = () =>({
+    type:"UPDATE_SHOW_START",
 });
 
-export const edit_show_success = (editshow) =>({
-    type:"EDIT_SHOW_SUCCESS",
-    payload:editshow,
+export const update_show_success = (updateshow) =>({
+    type:"UPDATE_SHOW_SUCCESS",
+    payload:updateshow,
 });
 
-export const edit_show_failure = (err) =>({
-    type:"EDIT_SHOW_FAILURE",
+export const update_show_failure = (err) =>({
+    type:"UPDATE_SHOW_FAILURE",
     payload:err,
 });
 

@@ -40,13 +40,13 @@ const MovieReducer = (state, action) =>{
             };
 
 
-            case "EDIT_SHOW_START" : 
+            case "UPDATE_SHOW_START" : 
             return {
                 ...state,
                 isFetching:true,
                 error:false,
             };
-        case "EDIT_SHOW_SUCCESS" : 
+        case "UPDATE_SHOW_SUCCESS" : 
             return {
                 movie: state.movie.map(
                     (movie)=> movie._id === action.payload._id && action.payload
@@ -54,7 +54,7 @@ const MovieReducer = (state, action) =>{
                 isFetching:false,
                 error:false,
             };
-        case "EDIT_SHOW_FAILURE" : 
+        case "UPDATE_SHOW_FAILURE" : 
             return {
                 ...state,
                 isFetching:false,

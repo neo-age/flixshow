@@ -20,11 +20,30 @@ router.post("/", verify, async (req, res) => {
   });
 
 //UPDATE
-
-router.put("/:id", verify, async (req, res) => {
+router.put('/id/:id', async (req,res) => {
+    const updatedMovie = await movieModel.findByIdAndUpdate(
+        req.params.id,
+        {
+          $set: req.body,
+        },
+        { new: true }
+      );
+    try{
+        res.status(200).json({
+            status : 'Success',
+            data : {
+              updatedMovie
+            }
+          })
+    }catch(err){
+        console.log(err)
+    }
+})
+router.put("/id/:id", verify, async (req, res) => {
+  console.log(req.params.id,req.user)
   if (req.user.isAdmin) {
     try {
-      const updatedMovie = await Movie.findByIdAndUpdate(
+      const updatedMovie = await movieModel.findByIdAndUpdate(
         req.params.id,
         {
           $set: req.body,

@@ -9,9 +9,9 @@ import {
   create_show_start, 
   create_show_success, 
   create_show_failure,
-  edit_show_start, 
-  edit_show_success, 
-  edit_show_failure
+  update_show_start, 
+  update_show_success, 
+  update_show_failure
  } from "./MovieActions";
 
 
@@ -45,20 +45,20 @@ export const createMovies = async (show, dispatch) => {
   }
 };
 
-//edit
-export const editContext = async (id, show, dispatch) => {
-  dispatch(edit_show_start());
+//update
+export const updateMovies = async (show, dispatch) => {
+  dispatch(update_show_start());
   try {
-    
-    const res = await axios.put(`movies/${id}`, show, {
+    const res = await axios.put(`http://localhost:4400/api/movies/id/${show._id}`,{
+      ...show,
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-      }
-    })
-    console.log(res)
-    dispatch(edit_show_success(res.data));
+      
+    },});
+    dispatch(update_show_success(res.data));
   } catch (err) {
-    dispatch(edit_show_failure());
+    console.log(err)
+    dispatch(update_show_failure());
   }
 };
 

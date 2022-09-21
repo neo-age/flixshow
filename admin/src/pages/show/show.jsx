@@ -1,9 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
 import "./show.css";
 import { Publish } from "@material-ui/icons";
-import { editContext } from "../../context/movieContext/ApiCallls";
+import { updateMovies } from "../../context/movieContext/ApiCallls";
 import { MovieContext } from "../../context/movieContext/MovieContext";
-import { useContext, useState } from "react";
+import { useContext ,useState } from "react";
 
 export default function Show() {
     const location = useLocation();
@@ -16,13 +16,12 @@ export default function Show() {
       }
 
     const {dispatch} = useContext(MovieContext)
-
     const handleSubmit = (e)=>{
         e.preventDefault();
-        editContext(editshow._id, editshow, dispatch)
+        updateMovies(editshow ,dispatch)
       }
 
-      console.log(editshow._id, editshow, dispatch);
+      console.log(editshow);
 
   return (
     <div className="show">

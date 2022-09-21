@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const cors = require('cors');
 const mongoose = require('mongoose')
 const dotenv = require('dotenv').config();
 const authRoute = require('./routes/auth')
@@ -13,6 +14,8 @@ mongoose.connect(
     ).then(()=>console.log("mongoDB connected")).catch(err=>console.log(err))
 
 app.use(express.json())
+
+app.use(cors());
 
 app.use('/api/auth', authRoute)
 
