@@ -6,7 +6,7 @@ import {
   PermIdentity,
   PlayCircleOutline,
   Add,
-  AttachMoney,
+  PlaylistPlay,
   BarChart,
   MailOutline,
   DynamicFeed,
@@ -57,13 +57,21 @@ export default function Sidebar() {
             <Link to="/newshow" className="link">
               <li className="sidebarListItem">
                 <Add className="sidebarIcon" />
-                Add new
+                Add show
               </li>
             </Link>
-            <li className="sidebarListItem">
-              <AttachMoney className="sidebarIcon" />
-              Transactions
-            </li>
+            <Link to="/lists" className="link">
+              <li className="sidebarListItem">
+                <PlaylistPlay className="sidebarIcon" />
+                lists
+              </li>
+            </Link>
+            <Link to="/newList" className="link">
+              <li className="sidebarListItem">
+                <Add className="sidebarIcon" />
+                Add list
+              </li>
+            </Link>
             <li className="sidebarListItem">
               <BarChart className="sidebarIcon" />
               Reports

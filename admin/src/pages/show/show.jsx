@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import "./show.css";
 import { Publish } from "@material-ui/icons";
-import { updateMovies } from "../../context/movieContext/ApiCallls";
+import { updateMovies } from "../../context/movieContext/ApiCalls";
 import { MovieContext } from "../../context/movieContext/MovieContext";
 import { useContext ,useState } from "react";
 

@@ -9,6 +9,9 @@ import NewUser from "./pages/newUser/NewUser";
 import ShowList from "./pages/showList/showList";
 import Show from "./pages/show/show";
 import NewShow from "./pages/newShow/Newshow";
+import Listofshows from "./pages/listOfShows/ListOfShows";
+import List from "./pages/list/list";
+import NewList from "./pages/newLIst/NewList";
 import Login from "./pages/login/Login";
 import {
   BrowserRouter as Router,
@@ -38,6 +41,9 @@ function App() {
           <Route path="/showList" element={<ShowList />}/>
           <Route path="/show/:showid" element={<Show />}/>
           <Route path="/newshow" element={<NewShow />}/>
+          <Route path="/lists" element={<Listofshows />}/>
+          <Route path="/list/:listid" element={<List />}/>
+          <Route path="/NewList" element={<NewList />}/>
         </Routes>
       </div>
     </Router>

@@ -1,42 +1,28 @@
-import "./showList.css";
+import "./ListOfShows.css";
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { useEffect, useContext } from "react";
-import { MovieContext } from "../../context/movieContext/MovieContext";
-import { deleteMovies, getMovies } from "../../context/movieContext/ApiCalls";
+import { ListContext } from "../../context/listContext/ListContext";
+import { deleteLists, getLists } from "../../context/listContext/ApiCallls";
 
-export default function ShowList() {
-  const {movie, dispatch} = useContext(MovieContext)
+export default function Listofshows() {
+  const {list, dispatch} = useContext(ListContext)
 
   useEffect(()=>{
-    getMovies(dispatch)
+    getLists(dispatch)
   },[dispatch])
 
   const handleDelete = (id) => {
     console.log(id)
-    deleteMovies(id, dispatch)
+    deleteLists(id, dispatch)
   };
   
   
   const columns = [
     { field: "_id", headerName: "ID", flex: 1 },
-    {
-      field: "show",
-      headerName: "Show",
-      flex: 1 ,
-      renderCell: (params) => {
-        return (
-          <div className="showListItem">
-            <img className="showListImg" src={params.row.imgsm} alt="" />
-            {params.row.title}
-          </div>
-        );
-      },
-    },
+    { field: "title", headerName: "title", flex: 1 },
     { field: "genre", headerName: "Genre", flex: 1 },
-    { field: "year", headerName: "Year", flex: 1 },
-    { field: "agelimit", headerName: "Limit", flex: 1 },
     { field: "type", headerName: "Type", flex: 1 },
 
 
@@ -47,11 +33,11 @@ export default function ShowList() {
       renderCell: (params) => {
         return (
           <>
-            <Link to={"/show/" + params.row._id} state={params.row}>
-              <button className="showListEdit">Edit</button>
+            <Link to={"/list/" + params.row._id} state={params.row}>
+              <button className="listofshowsEdit">Edit</button>
             </Link>
             <DeleteOutline
-              className="showListDelete"
+              className="listofshowsDelete"
               onClick={() => handleDelete(params.row._id)}
             />
           </>
@@ -62,9 +48,9 @@ export default function ShowList() {
   
 
   return (
-    <div className="showList">
+    <div className="listofshows">
       <DataGrid 
-        rows={movie} 
+        rows={list} 
         disableSelectionOnClick
         columns={columns} 
         pageSize={10} 

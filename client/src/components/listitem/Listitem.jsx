@@ -11,7 +11,7 @@ const Listitem = ({index, item}) => {
     useEffect(()=>{
         const getelementinfo = async ()=>{
             try {
-                const res = await axios.get("api/movies/id/"+item,
+                const res = await axios.get(`http://localhost:4400/api/movies/id/${item}`,
                   {
                     headers: {
                       token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMmQ5OTM4M2E2MWZkNjA3NGNhNmM2NSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY2MjM1OTYwNywiZXhwIjoxNjg4Mjc5NjA3fQ.S4Py9ZZSuYFliJ6NDyCcbV_CuB7d5vjzkQg3o3GUxEY"
@@ -25,7 +25,6 @@ const Listitem = ({index, item}) => {
         }
         getelementinfo()
     },[item])
-    console.log(movie)
 
     return (
         

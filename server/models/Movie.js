@@ -9,7 +9,7 @@ const MovieSchema = new mongoose.Schema({
     trailer:{type:String},
     video:{type:String},
     year:{type:String},
-    agelimit:{type:Number},
+    agelimit:{type:String},
     genre:{type:String},
     duration:{type:Number},
     type:{type:String, default:"serie"}

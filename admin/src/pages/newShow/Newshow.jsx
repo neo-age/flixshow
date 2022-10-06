@@ -2,7 +2,7 @@ import "./NewShow.css";
 import { useContext, useState } from "react";
 import {Storage} from '../../Firebase';
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
-import { createMovies } from "../../context/movieContext/ApiCallls";
+import { createMovies } from "../../context/movieContext/ApiCalls";
 import { MovieContext } from "../../context/movieContext/MovieContext";
 
 export default function NewShow() {

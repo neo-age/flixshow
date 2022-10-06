@@ -18,9 +18,30 @@ router.post("/", verify, async (req, res) => {
     }
   });
 
+//UPDATE
+router.put('/id/:id', async (req,res) => {
+  const updatedList = await listModel.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: req.body,
+      },
+      { new: true }
+    );
+  try{
+      res.status(200).json({
+          status : 'Success',
+          data : {
+            updatedList
+          }
+        })
+  }catch(err){
+      console.log(err)
+  }
+})
+
 //DELETE
 
-router.delete("/:id", verify, async (req, res) => {
+router.delete("/id/:id", verify, async (req, res) => {
     if (req.user.isAdmin) {
       try{
         await listModel.findByIdAndDelete(req.params.id)

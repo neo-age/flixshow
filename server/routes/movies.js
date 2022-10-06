@@ -39,25 +39,6 @@ router.put('/id/:id', async (req,res) => {
         console.log(err)
     }
 })
-router.put("/id/:id", verify, async (req, res) => {
-  console.log(req.params.id,req.user)
-  if (req.user.isAdmin) {
-    try {
-      const updatedMovie = await movieModel.findByIdAndUpdate(
-        req.params.id,
-        {
-          $set: req.body,
-        },
-        { new: true }
-      );
-      res.status(200).json(updatedMovie);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  } else {
-    res.status(403).json("You are not allowed!");
-  }
-});
 
 //DELETE
 
