@@ -2,6 +2,7 @@ import "./Featured.scss"
 import { PlayArrow, InfoOutlined } from '@material-ui/icons';
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { url } from "../../Urls";
 
 const Featured = ({type}) => {
     const [contant, setContant] = useState({})
@@ -9,11 +10,11 @@ const Featured = ({type}) => {
     useEffect(()=>{
         const getRandomshow = async ()=>{
             try {
-                const res = await axios.get(`http://localhost:4400/api/movies?type=${type}`,
+                const res = await axios.get(`${url}/api/movies?type=${type}`,
                   {
                     headers: {
-                      token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMmQ5OTM4M2E2MWZkNjA3NGNhNmM2NSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY2MjA3MDI2MiwiZXhwIjoxNjg3OTkwMjYyfQ.oflhuwyOtix4ZXVfljMIVKYeBXmH9PXcrVi5mgEz7jI",
-                    },
+                        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+                      },
                   }
                 );
                 setContant(res.data[0])

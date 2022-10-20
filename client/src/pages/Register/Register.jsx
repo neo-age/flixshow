@@ -3,6 +3,7 @@ import navbarLogo from '../../media/icons/netflix-official.svg';
 import { useRef, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { url } from '../../Urls';
 
 const Register = () => {
     const [email, setEmail] = useState("")
@@ -18,7 +19,7 @@ const Register = () => {
     const handleFinish = async (e)=>{
         e.preventDefault()
         try {
-            await axios.post(`http://localhost:4400/api/auth/regester`,{email,username, password});
+            await axios.post(`${url}/api/auth/regester`,{email,username, password});
             navagate("/login")
         } catch (error) {
             console.log(error);
