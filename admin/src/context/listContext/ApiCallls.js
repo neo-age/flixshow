@@ -1,5 +1,5 @@
 import axios from "axios";
-import { url } from "../../urls";
+import { Url } from "../../Urls";
 import { 
   get_list_start, 
   get_list_success, 
@@ -20,9 +20,9 @@ import {
 export const getLists = async (dispatch)=>{
     dispatch(get_list_start())
     try{
-        const res = await axios.get(`${url}/api/lists/`, {
+        const res = await axios.get(`${Url}/api/lists/`, {
             headers:{
-                token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+                token: "Bearer " + JSON.parse(localStorage.getItem("admin")).accessToken,
             },
         });
         dispatch(get_list_success(res.data))
@@ -35,9 +35,9 @@ export const getLists = async (dispatch)=>{
 export const createLists = async (list, dispatch) => {
   dispatch(create_list_start());
   try {
-    const res = await axios.post(`${url}/api/lists/`,list, {
+    const res = await axios.post(`${Url}/api/lists/`,list, {
       headers: {
-        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+        token: "Bearer " + JSON.parse(localStorage.getItem("admin")).accessToken,
       },
     });
     dispatch(create_list_success(res.data));
@@ -50,10 +50,10 @@ export const createLists = async (list, dispatch) => {
 export const updatelist = async (list, dispatch) => {
   dispatch(update_list_start());
   try {
-    const res = await axios.put(`${url}/api/lists/id/${list._id}`,{
+    const res = await axios.put(`${Url}/api/lists/id/${list._id}`,{
       ...list,
       headers: {
-        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+        token: "Bearer " + JSON.parse(localStorage.getItem("admin")).accessToken,
       
     },});
     dispatch(update_list_success(res.data));
@@ -67,9 +67,9 @@ export const updatelist = async (list, dispatch) => {
 export const deleteLists = async (id, dispatch) => {
     dispatch(delete_list_start());
     try {
-      await axios.delete(`${url}/api/lists/id/${id}`, {
+      await axios.delete(`${Url}/api/lists/id/${id}`, {
         headers: {
-          token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+          token: "Bearer " + JSON.parse(localStorage.getItem("admin")).accessToken,
         },
       });
       dispatch(delete_list_success(id));

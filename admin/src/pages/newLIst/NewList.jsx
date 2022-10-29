@@ -1,7 +1,7 @@
 import "./NewList.css";
 import { useContext, useState, useEffect} from "react";
 import { useNavigate } from 'react-router-dom';
-import { createMovies, getMovies } from "../../context/movieContext/ApiCalls";
+import { /*createMovies ,*/ getMovies } from "../../context/movieContext/ApiCalls";
 import { MovieContext } from "../../context/movieContext/MovieContext";
 import { ListContext } from "../../context/listContext/ListContext";
 import { createLists } from "../../context/listContext/ApiCallls";

@@ -11,7 +11,10 @@ export default function ShowList() {
 
   useEffect(()=>{
     getMovies(dispatch)
+    console.log(dispatch)
   },[dispatch])
+
+  console.log(movie)
 
   const handleDelete = (id) => {
     console.log(id)

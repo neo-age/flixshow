@@ -3,6 +3,7 @@ import {
   LineStyle,
   Timeline,
   TrendingUp,
+  SupervisorAccountOutlined,
   PermIdentity,
   PlayCircleOutline,
   Add,
@@ -14,7 +15,7 @@ import {
   WorkOutline,
   Report,
 } from "@material-ui/icons";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Sidebar() {
   return (
@@ -23,92 +24,119 @@ export default function Sidebar() {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Dashboard</h3>
           <ul className="sidebarList">
-            <Link to="/" className="link">
-            <li className="sidebarListItem active">
-              <LineStyle className="sidebarIcon" />
-              Home
-            </li>
-            </Link>
             <li className="sidebarListItem">
-              <Timeline className="sidebarIcon" />
-              Analytics
+              <NavLink to="/" className="link">
+                <LineStyle className="sidebarIcon" />
+                Home
+              </NavLink>
             </li>
             <li className="sidebarListItem">
-              <TrendingUp className="sidebarIcon" />
-              Sales
+              <NavLink to="/analytics" className="link">
+                <Timeline className="sidebarIcon" />
+                Analytics
+              </NavLink>
+            </li>
+            <li className="sidebarListItem">
+              <NavLink to="/sales" className="link">
+                <TrendingUp className="sidebarIcon" />
+                Sales
+              </NavLink>
             </li>
           </ul>
         </div>
+
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Quick Menu</h3>
           <ul className="sidebarList">
-            <Link to="/users" className="link">
               <li className="sidebarListItem">
-                <PermIdentity className="sidebarIcon" />
-                Users
+                <NavLink to="/admins" className="link">
+                  <SupervisorAccountOutlined className="sidebarIcon" />
+                  Admins
+                </NavLink>
               </li>
-            </Link> 
-            <Link to="/showList" className="link">
               <li className="sidebarListItem">
-                <PlayCircleOutline className="sidebarIcon" />
-                Movies and shows
+                <NavLink to="/users" className="link">
+                  <PermIdentity className="sidebarIcon" />
+                  Users
+                </NavLink>
               </li>
-            </Link>
-            <Link to="/newshow" className="link">
               <li className="sidebarListItem">
-                <Add className="sidebarIcon" />
-                Add show
+                <NavLink to="/showList" className="link">
+                  <PlayCircleOutline className="sidebarIcon" />
+                  Movies and shows
+                </NavLink>
               </li>
-            </Link>
-            <Link to="/lists" className="link">
               <li className="sidebarListItem">
-                <PlaylistPlay className="sidebarIcon" />
-                lists
+                <NavLink to="/newshow" className="link">
+                  <Add className="sidebarIcon" />
+                  Add show
+                </NavLink>
               </li>
-            </Link>
-            <Link to="/newList" className="link">
               <li className="sidebarListItem">
-                <Add className="sidebarIcon" />
-                Add list
+                <NavLink to="/lists" className="link">
+                  <PlaylistPlay className="sidebarIcon" />
+                  lists
+                </NavLink>
               </li>
-            </Link>
-            <li className="sidebarListItem">
-              <BarChart className="sidebarIcon" />
-              Reports
-            </li>
-          </ul>
+              <li className="sidebarListItem">
+                <NavLink to="/newList" className="link">
+                  <Add className="sidebarIcon" />
+                  Add list
+                </NavLink>
+              </li>
+              <li className="sidebarListItem">
+                <NavLink to="/reports" className="link">
+                  <BarChart className="sidebarIcon" />
+                  Reports
+                </NavLink>
+              </li>
+            </ul>
         </div>
+
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Notifications</h3>
           <ul className="sidebarList">
             <li className="sidebarListItem">
-              <MailOutline className="sidebarIcon" />
-              Mail
+              <NavLink to="/mail" className="link">
+                <MailOutline className="sidebarIcon" />
+                Mail
+              </NavLink>
             </li>
             <li className="sidebarListItem">
-              <DynamicFeed className="sidebarIcon" />
-              Feedback
+              <NavLink to="/feedback" className="link">
+                <DynamicFeed className="sidebarIcon" />
+                Feedback
+              </NavLink>
             </li>
             <li className="sidebarListItem">
-              <ChatBubbleOutline className="sidebarIcon" />
-              Messages
+              <NavLink to="/messages" className="link">
+                <ChatBubbleOutline className="sidebarIcon" />
+                Messages
+              </NavLink>
             </li>
           </ul>
         </div>
+
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Staff</h3>
           <ul className="sidebarList">
             <li className="sidebarListItem">
-              <WorkOutline className="sidebarIcon" />
-              Manage
+              <NavLink to="/manage" className="link">
+                <WorkOutline className="sidebarIcon" />
+                Manage
+              </NavLink>
             </li>
             <li className="sidebarListItem">
-              <Timeline className="sidebarIcon" />
-              Analytics
+              <NavLink to="/analytics" className="link">
+                <Timeline className="sidebarIcon" />
+                Analytics
+              </NavLink>
             </li>
             <li className="sidebarListItem">
-              <Report className="sidebarIcon" />
-              Reports
+              <NavLink to="/reports" className="link">
+                <Report className="sidebarIcon" />
+                Reports
+              </NavLink>
             </li>
           </ul>
         </div>

@@ -37,7 +37,7 @@ export default function NewShow() {
       (error) => {
         alert(error);
       },
-      //after the file was uploaded get the file's url and add it to the state of the element
+      //after the file was uploaded get the file's Url and add it to the state of the element
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           setShow(prev=>{return{...prev,[item.label]:downloadURL}});
@@ -53,9 +53,9 @@ export default function NewShow() {
     upload([
       {file: showimage, label:"img"},
       {file: showtitleimage, label:"imgtitle"},
-      {file: showthumbnailimage, label:"imgsm"}
-      //{file: showtrailer, label:"trailer"},
-      //{file: showcontent, label:"video"}
+      {file: showthumbnailimage, label:"imgsm"},
+      {file: showtrailer, label:"trailer"},
+      {file: showcontent, label:"video"}
     ])
   }
   
@@ -108,17 +108,15 @@ console.log(show)
         </div>
         <div className="addshowItem">
           <label>Show trailer</label>
-          <input type="text" placeholder="show trailer..." name="trailer" onChange={handleChange}/>
-{//          <input type="file" id="Showtrailer" onChange={(e)=>setShowtrailer(e.target.files[0])}/>
-}        </div>
+        <input type="file" id="Showtrailer" onChange={(e)=>setShowtrailer(e.target.files[0])}/>
+        </div>
         <div className="addshowItem">
           <label>Show content</label>
-           <input type="text" placeholder="show" name="video" onChange={handleChange}/>
-{//         <input type="file" id="Showcontent" onChange={(e)=>setShowcontent(e.target.files[0])}/>
-}        </div>
+          <input type="file" id="Showcontent" onChange={(e)=>setShowcontent(e.target.files[0])}/>
+        </div>
         <div className="addshowItem">
             <label>Create button</label>
-        {uploaded === 3 ?(
+        {uploaded === 5 ?(
             <button className="create_show_Button" onClick={handleSubmit}>create new show</button>
         ):(
             <button className="upload_media_button" onClick={handleUpload}>upload media</button>

@@ -1,4 +1,4 @@
-import "./userList.css";
+import "./adminList.css";
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
@@ -6,18 +6,16 @@ import { useEffect, useContext } from "react";
 import { UserContext } from "../../context/userContext/UserContext";
 import { deleteUsers, getUsers } from "../../context/userContext/ApiCalls";
 
-export default function UserList() {
+export default function AdminList() {
   const {user, dispatch} = useContext(UserContext)
 
   useEffect(()=>{
-    const user = "users"
-    
+    const user = "admins"
     getUsers(dispatch, user)
   },[dispatch])
 
   const handleDelete = (id) => {
-    const user = "users"
-
+    const user = "admins"
     deleteUsers(id, dispatch, user)
   };
   

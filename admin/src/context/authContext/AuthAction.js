@@ -4,9 +4,9 @@ export const loginStart = () =>({
     type:"LOGIN_START",
 });
 
-export const loginSuccess = (user) =>({
+export const loginSuccess = (admin) =>({
     type:"LOGIN_SUCCESS",
-    payload:user,
+    payload:admin,
 });
 
 export const loginFailure = (err) =>({

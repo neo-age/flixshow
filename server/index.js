@@ -5,6 +5,8 @@ const mongoose = require('mongoose')
 const dotenv = require('dotenv').config();
 const authRoute = require('./routes/auth')
 const userRoute = require('./routes/users')
+const admin_authRoute = require('./routes/adminAuth')
+const adminsRoute = require('./routes/admins')
 const movieRoute = require('./routes/movies')
 const listRoute = require('./routes/lists')
 
@@ -18,6 +20,10 @@ app.use(express.json())
 app.use(cors());
 
 app.use('/api/auth', authRoute)
+
+app.use('/api/admin_auth', admin_authRoute)
+
+app.use('/api/admins', adminsRoute)
 
 app.use('/api/users', userRoute)
 

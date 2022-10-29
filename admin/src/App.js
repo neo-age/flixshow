@@ -1,8 +1,10 @@
 import "./App.css";
 import { useContext } from "react";
+import { deviceType } from 'react-device-detect';
 import Sidebar from "./components/sidebar/Sidebar";
 import Topbar from "./components/topbar/Topbar";
 import Dashboard from "./pages/dashboard/Dashboard";
+import AdminList from "./pages/adminList/AdminList";
 import UserList from "./pages/userList/UserList";
 import User from "./pages/user/User";
 import NewUser from "./pages/newUser/NewUser";
@@ -22,20 +24,23 @@ import {
 import { AuthContext } from "./context/authContext/AuthContext";
 
 function App() {
-  const {user} = useContext(AuthContext);
-  return user ? (
+  console.log(deviceType)
+  const {admin} = useContext(AuthContext);
+  if(deviceType === "browser"){
+  return admin ? (
     <Router>
       <Topbar />
       <div className="container">
         <Sidebar />
         <Routes>
-          <Route exact path="/login" element={user ? (
+          <Route exact path="/login" element={admin ? (
                 <Navigate replace to="/"/>
               ) : (
                 <Dashboard />
               )}/>
           <Route exact path="/" element={<Dashboard />}/>
           <Route path="/users" element={<UserList />}/>
+          <Route path="/admins" element={<AdminList />}/>
           <Route path="/user/:userId" element={<User />}/>
           <Route path="/newuser" element={<NewUser />}/>
           <Route path="/showList" element={<ShowList />}/>
@@ -50,7 +55,7 @@ function App() {
   ) : (
     <Router>
         <Routes>
-          <Route exact path="/" element={user ? (
+          <Route exact path="/" element={admin ? (
               <Dashboard />
             ) : (
               <Navigate replace to="/login"/>
@@ -60,6 +65,19 @@ function App() {
         </Routes>
     </Router>
   )
+    }else if (deviceType === "mobile") {
+      return (
+          <>
+          <h1>This is rendered only on mobile</h1>
+          </>
+      )
+    }else if(deviceType === "tablet") {
+      return (
+          <>
+          <h1>This is rendered only on tablet</h1>
+          </>
+      )
+    }
 }
 
 export default App;

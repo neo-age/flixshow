@@ -22,7 +22,7 @@
 
 .sidebarList {
   list-style: none;
-  padding: 5px;
+  padding: 0px;
 }
 
 .sidebarListItem {
@@ -33,9 +33,19 @@
   border-radius: 10px;
 }
 
-.sidebarListItem.active,
-.sidebarListItem:hover {
-  background-color: rgb(240, 240, 255);
+.sidebarListItem a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  padding: 5px 7px 5px 7px;
+  transition: ease-in-out 150ms;
+}
+.sidebarListItem a.active,
+.sidebarListItem a:hover{
+background: #f6f7ff;
 }
 
 .sidebarIcon{
